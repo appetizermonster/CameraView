@@ -30,6 +30,7 @@ public class PictureResult {
         public boolean isSnapshot;
         public Location location;
         public int rotation;
+        public int requestedRotation;
         public Size size;
         public Facing facing;
         public byte[] data;
@@ -39,6 +40,7 @@ public class PictureResult {
     private final boolean isSnapshot;
     private final Location location;
     private final int rotation;
+    private final int requestedRotation;
     private final Size size;
     private final Facing facing;
     private final byte[] data;
@@ -48,6 +50,7 @@ public class PictureResult {
         isSnapshot = builder.isSnapshot;
         location = builder.location;
         rotation = builder.rotation;
+        requestedRotation = builder.requestedRotation;
         size = builder.size;
         facing = builder.facing;
         data = builder.data;
@@ -83,6 +86,17 @@ public class PictureResult {
      */
     public int getRotation() {
         return rotation;
+    }
+
+    /**
+     * Returns the requested rotation that was applied to the picture.
+     * This is the rotation that was requested by the user, and it may be
+     * not present in the EXIF metadata.
+     *
+     * @return the requested rotation
+     */
+    public int getRequestedRotation() {
+        return requestedRotation;
     }
 
     /**

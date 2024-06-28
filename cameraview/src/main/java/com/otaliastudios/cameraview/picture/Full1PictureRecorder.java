@@ -72,6 +72,7 @@ public class Full1PictureRecorder extends FullPictureRecorder {
                                 exifRotation = 0;
                             }
                             mResult.data = data;
+                            mResult.requestedRotation = mResult.rotation;
                             mResult.rotation = exifRotation;
                             LOG.i("take(): starting preview again. ", Thread.currentThread());
 
