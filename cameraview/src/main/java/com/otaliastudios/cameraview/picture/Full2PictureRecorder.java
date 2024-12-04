@@ -143,6 +143,7 @@ public class Full2PictureRecorder extends FullPictureRecorder
         byte[] bytes = new byte[buffer.remaining()];
         buffer.get(bytes);
         mResult.data = bytes;
+        mResult.requestedRotation = mResult.rotation;
 
         // Just like Camera1, unfortunately, the camera might rotate the image
         // and put EXIF=0 instead of respecting our EXIF and leave the image unaltered.
@@ -164,6 +165,7 @@ public class Full2PictureRecorder extends FullPictureRecorder
             mDngCreator.writeImage(stream, image);
             stream.flush();
             mResult.data = array.toByteArray();
+            mResult.requestedRotation = mResult.rotation;
         } catch (IOException e) {
             mDngCreator.close();
             try { stream.close(); } catch (IOException ignore) {}
